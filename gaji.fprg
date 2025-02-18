@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="gaji"/>
+        <attribute name="authors" value="pc"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-01-23 12:16:52 PM"/>
+        <attribute name="created" value="cGM7QUJDOzIwMjUtMDEtMjM7MTA6NDU6MDEgQU07MTY2NA=="/>
+        <attribute name="edited" value="cGM7QUJDOzIwMjUtMDEtMjM7MTI6MTY6NTIgUE07MTsxNzkz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="gajiPokok, tunjangan, jamLembur, Lembur, rating, bonus, totalGaji" type="Integer" array="False" size=""/>
+            <declare name="jabatan" type="String" array="False" size=""/>
+            <output expression="&quot;masukan jabatan anda!&quot;" newline="True"/>
+            <input variable="jabatan"/>
+            <if expression="jabatan == &quot;manager&quot;">
+                <then>
+                    <assign variable="gajiPokok" expression="10000000"/>
+                    <assign variable="tunjangan" expression="3000000"/>
+                </then>
+                <else>
+                    <if expression="jabatan == &quot;supervisor&quot;">
+                        <then>
+                            <assign variable="gajiPokok" expression="7000000"/>
+                            <assign variable="tunjangan" expression="2000000"/>
+                        </then>
+                        <else>
+                            <if expression="jabatan == &quot;staf&quot;">
+                                <then>
+                                    <assign variable="gajiPokok" expression="5000000"/>
+                                    <assign variable="tunjangan" expression="1000000"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;error&quot;" newline="True"/>
+                                    <breakpoint expression="" always="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot;masukkan jam lembur anda&quot;" newline="True"/>
+            <input variable="jamLembur"/>
+            <assign variable="Lembur" expression="25000*jamLembur"/>
+            <output expression="&quot;Masukan rating anda!&quot;" newline="True"/>
+            <input variable="rating"/>
+            <if expression="rating == 5">
+                <then>
+                    <assign variable="bonus" expression="0.2 * gajiPokok"/>
+                </then>
+                <else>
+                    <if expression="rating == 4">
+                        <then>
+                            <assign variable="bonus" expression="0.15 * gajiPokok"/>
+                        </then>
+                        <else>
+                            <if expression="rating == 3">
+                                <then>
+                                    <assign variable="bonus" expression="0.10 * gajiPokok"/>
+                                </then>
+                                <else>
+                                    <if expression="rating == 2">
+                                        <then>
+                                            <assign variable="bonus" expression="0.05 * gajiPokok"/>
+                                        </then>
+                                        <else>
+                                            <if expression="rating == 1">
+                                                <then>
+                                                    <assign variable="bonus" expression="0 * gajiPokok"/>
+                                                </then>
+                                                <else>
+                                                    <output expression="&quot;error&quot;" newline="True"/>
+                                                    <breakpoint expression="" always="True"/>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="totalGaji" expression="gajiPokok - tunjangan + bonus"/>
+            <output expression="totalGaji" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
